@@ -5,6 +5,10 @@
  */
 package Hospital;
 
+import Hospital.SecretarySystem.SecretaryPage;
+import Hospital.DoctorSystem.DoctorPage;
+import Hospital.AdminSystem.AdminPage;
+import Hospital.PatientSystem.PatientPage;
 import javax.swing.JOptionPane;
 import java.io.*;
 import java.util.logging.Level;
@@ -189,8 +193,6 @@ public class LoginPage extends javax.swing.JFrame {
   String login = userID + password;
   Boolean log = false;
   while ((st = br.readLine()) != null){ 
-    System.out.println(login); 
-    System.out.println(st);
       if(st.equals(login)){
           char ch1 = st.charAt(0);
           log = true;

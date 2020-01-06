@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Hospital;
-
+package Hospital.PatientSystem;
+import Hospital.PatientSystem.PatientPage;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luke
@@ -16,8 +20,8 @@ public class BookAppointment extends javax.swing.JFrame {
      */
     public BookAppointment() {
         initComponents();
+        AddDocs();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +38,7 @@ public class BookAppointment extends javax.swing.JFrame {
         DoctorSelect = new javax.swing.JComboBox<>();
         DateSelect = new javax.swing.JComboBox<>();
         Back = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +72,7 @@ public class BookAppointment extends javax.swing.JFrame {
         jLabel3.setText("Select Doctor");
 
         DoctorSelect.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        DoctorSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", " " }));
+        DoctorSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         DateSelect.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         DateSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "13/01/20", "14/01/20", "15/01/20", "16/01/20", "17/01/20", "18/01/20", "19/01/20", "20/01/20" }));
@@ -80,6 +85,14 @@ public class BookAppointment extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Make appointment");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,16 +102,18 @@ public class BookAppointment extends javax.swing.JFrame {
                 .addGap(113, 113, 113)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DateSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(DoctorSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(DoctorSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DateSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(414, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(309, 309, 309)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Back)
                 .addGap(63, 63, 63))
         );
@@ -115,9 +130,14 @@ public class BookAppointment extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DateSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(Back)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Back)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33))))
         );
 
         pack();
@@ -128,6 +148,14 @@ public class BookAppointment extends javax.swing.JFrame {
           obj.setVisible(true);
           dispose();
     }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String doc = DoctorSelect.getSelectedItem().toString();
+        String date = DateSelect.getSelectedItem().toString();
+        if(date.equals("Select") || doc.equals("Select")){
+            JOptionPane.showMessageDialog(rootPane, "Make sure both a doctor and date are selected");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,14 +188,34 @@ public class BookAppointment extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BookAppointment().setVisible(true);
+                
             }
         });
+    }
+    public void Doctors() throws IOException{
+    
+	File file = new File("Doctors.txt"); 
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String s; 
+        //DoctorSelect.addItem("gamer");
+        while ((s = br.readLine()) != null){
+            DoctorSelect.addItem(s);
+            br.readLine();
+        }
+    }
+    public void AddDocs(){
+        try {
+            Doctors();
+        } catch (IOException ex) {
+            Logger.getLogger(BookAppointment.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JComboBox<String> DateSelect;
     private javax.swing.JComboBox<String> DoctorSelect;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
