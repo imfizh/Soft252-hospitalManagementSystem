@@ -9,12 +9,14 @@ package Hospital;
  *
  * @author Luke
  */
-public class MedicineItem extends MedicineStock {
+public abstract class MedicineItem extends MedicineStock {
     public MedicineItem(String name){
-        this.name = name;
+        super(name);
     }
     public MedicineItem(String name, Integer qty){
-        this.name = name;
-        this.quantityInStock = qty;
+        super(name, qty);
+    }
+    public MedicineItem(){
+        super();
     }
 }

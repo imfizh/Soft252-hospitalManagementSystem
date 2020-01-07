@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Hospital.Patient;
+import java.util.ArrayList;
 /**
  *
  * @author Luke
@@ -117,7 +119,8 @@ public class LoginPage extends javax.swing.JFrame {
       //String userID = UserIDTextbox.getText();
       //String password = PasswordTextbox.getText();
         try {
-            Logins();
+            //Logins();
+            Logins2();
             
         } catch (Exception ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -220,6 +223,43 @@ public class LoginPage extends javax.swing.JFrame {
   JOptionPane.showMessageDialog(rootPane, "User ID or password is incorrect");
   }
   } 
+    public void Logins2()throws Exception{
+        try{
+    ObjectInputStream in = new ObjectInputStream(new FileInputStream("testFile.txt"));
+    //Patient p2 = (Patient) in.readObject();
+    Object obj = null;
+    while(!(obj = in.readObject()).equals(null)){
+        if(obj instanceof Patient){
+        //Patient p2 = (Patient) in.readObject();
+        Patient p2 = (Patient)obj;
+        System.out.println(p2.getUserID());
+        if(p2.getUserID().equals(UserIDTextbox.getText()) && p2.getPassword().equals(PasswordTextbox.getText())){
+          PatientPage page = new PatientPage();
+          page.setVisible(true);
+          dispose();
+        }}
+    }
+    
+    //if(p2.getUserID().equals(UserIDTextbox.getText()) && p2.getPassword().equals(PasswordTextbox.getText())){
+        //PatientPage obj = new PatientPage();
+          //obj.setVisible(true);
+          //dispose();
+          
+          in.close();
+        }catch(EOFException eof){
+			System.out.println("End of file reached");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    //}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
