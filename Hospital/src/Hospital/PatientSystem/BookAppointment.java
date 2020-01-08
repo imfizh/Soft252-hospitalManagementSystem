@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import Hospital.LoginPage;
+import Hospital.ReadIn;
 /**
  *
  * @author Luke
@@ -194,17 +194,21 @@ public class BookAppointment extends javax.swing.JFrame {
         });
     }
     public void Doctors() throws IOException{
-    LoginPage LP = new LoginPage();
-    int i = LP.people.size();
+    ReadIn RI = new ReadIn();
+        try {
+            RI.Read();
+        } catch (Exception ex) {
+            Logger.getLogger(BookAppointment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    int i = RI.people.size();
     int t =0;
-    System.out.println(i);
     while(t<i)
     {
-    String ID = LP.people.get(t).getUserID();
+    String ID = RI.people.get(t).getUserID();
     char first = ID.charAt(0);
     String first1 = Character.toString(first);
     if(first1.equals("d") || first1.equals("D")){
-     System.out.println("GAMERS");
+     DoctorSelect.addItem(RI.people.get(t).getName());
     }
     t= t+1;
     }
