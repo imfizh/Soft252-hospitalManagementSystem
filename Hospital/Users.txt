@@ -1,8 +1,7 @@
-A1234:password:luke pettitt:real address, real street, pl4 8ah:male:21
-S1234:password:like pettitt:fake address, fake street, pl4 8ak:female:21
-D1234:password:abe russel:Fictitious Clinic, Diagon Alley, Drake Circus,Plymouth, PL4 8AA:male:50
-D1235:password:pale dale:Fictitious Clinic, Diagon Alley, Drake Circus,Plymouth, PL4 8AA:male:50
-D1236:password:maximus g:Fictitious Clinic, Diagon Alley, Drake Circus,Plymouth, PL4 8AA:male:2
-P1234:password:john doe:portland square building, drake circus, plymouth, pl4 8aa:male:45
-P1235:password:bony tony:an address, a street, pl4 8aj:male:21
-P1236:password:abdul al kazim:another address, another street, pl4 8al:female:100
+A1234:password:name:address:male:25
+S1234:password:name:address:male:25
+D1234:password:name1:address:female:25
+D1234:password:name3:address:male:25
+P1234:password:name1:address:female:25
+P1234:password:name2:address:male:25
+P1234:password:name3:address:male:25

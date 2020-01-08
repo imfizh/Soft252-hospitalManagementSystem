@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  */
 public class AddPatient extends javax.swing.JFrame {
 ReadIn RI = new ReadIn();
+public int num = 0;
     /**
      * Creates new form AddPatient
      */
@@ -224,6 +225,11 @@ ReadIn RI = new ReadIn();
     } catch (Exception ex) {
         Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
     }
+    try {
+        Rewrite();
+    } catch (Exception ex) {
+        Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_CreatePatientActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -236,17 +242,17 @@ ReadIn RI = new ReadIn();
         nameText.setText(PatientsBox.getSelectedItem().toString());
         String name = PatientsBox.getSelectedItem().toString();
         int i = RI.potentials.size();
-        int t = 0;
+        num = 0;
         boolean found = false;
-        while(t<i && !found){
-        if(name.equals(RI.potentials.get(t).getName()))
+        while(num<i && !found){
+        if(name.equals(RI.potentials.get(num).getName()))
         {
-        AddressText.setText(RI.potentials.get(t).getAddress());
-        SexText.setText(RI.potentials.get(t).getSex());
-        AgeText.setText(RI.potentials.get(t).getAge());
+        AddressText.setText(RI.potentials.get(num).getAddress());
+        SexText.setText(RI.potentials.get(num).getSex());
+        AgeText.setText(RI.potentials.get(num).getAge());
         found = true;
-        }
-        t= t+1;
+        }else{num= num+1;}
+        
         }
     }//GEN-LAST:event_PatientsBoxActionPerformed
 
@@ -321,8 +327,21 @@ ReadIn RI = new ReadIn();
     SexText.setText("");
     UserIDText.setText("");
     PasswordText.setText("");
+    PatientsBox.removeItemAt(num);
+    }}
+    public void Rewrite() throws Exception{
+    RI.potentials.remove(num-1);
+    int y = RI.potentials.size();
+    int t = 0;
+    BufferedWriter br = new BufferedWriter(new FileWriter("AccountRequests.txt"));
+    while(t<y){
+    br.write(RI.potentials.get(t).getName() + ":" + RI.potentials.get(t).getAddress() + ":" + RI.potentials.get(t).getSex() + ":" + RI.potentials.get(t).getAge());
+    br.newLine();
+    t= t+1;
+   }
+   br.close();
     }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddressText;
