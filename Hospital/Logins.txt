@@ -1,8 +1,0 @@
-A1234password
-S1234password
-D1234password
-D1235password
-D1236password
-P1234password
-P1235password
-P1236password

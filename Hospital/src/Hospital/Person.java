@@ -26,6 +26,12 @@ public class Person {
         this.userID = userID;
         this.password = password;
     }
+    public Person(String name, String address, String sex, String age){
+        this.sex = sex;
+        this.setName(name);
+        this.age = age;
+        this.address = address;
+    }
     public String toString(){
     return this.sex + " " + this.name + " " + this.age;
 }

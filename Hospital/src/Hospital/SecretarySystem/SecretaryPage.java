@@ -68,7 +68,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Create patient account");
+        jLabel2.setText("Patient account requests");
 
         CreatePatientAccount.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         CreatePatientAccount.setText("Create account");
@@ -89,7 +89,7 @@ public class SecretaryPage extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CreatePatientAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

@@ -50,6 +50,8 @@
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="RPAbutton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,9 +69,12 @@
                   <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="PasswordTextbox" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="LoginButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LoginButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="RPAbutton" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="64" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,6 +129,17 @@
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="RPAbutton">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Request patient account"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RPAbuttonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

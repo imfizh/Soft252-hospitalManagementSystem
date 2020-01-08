@@ -8,6 +8,7 @@ package Hospital;
 import Hospital.SecretarySystem.SecretaryPage;
 import Hospital.DoctorSystem.DoctorPage;
 import Hospital.AdminSystem.AdminPage;
+import Hospital.PatientSystem.AccountRequest;
 import Hospital.PatientSystem.PatientPage;
 import javax.swing.JOptionPane;
 import java.io.*;
@@ -45,6 +46,7 @@ public class LoginPage extends javax.swing.JFrame {
         UserIDTextbox = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         PasswordTextbox = new javax.swing.JPasswordField();
+        RPAbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login Page");
@@ -71,6 +73,14 @@ public class LoginPage extends javax.swing.JFrame {
 
         PasswordTextbox.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        RPAbutton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        RPAbutton.setText("Request patient account");
+        RPAbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RPAbuttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,7 +104,9 @@ public class LoginPage extends javax.swing.JFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(UserIDTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(2, 2, 2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RPAbutton)
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,9 +120,11 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PasswordTextbox, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(LoginButton)
-                .addGap(0, 65, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginButton)
+                    .addComponent(RPAbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 64, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,6 +161,12 @@ public class LoginPage extends javax.swing.JFrame {
       //JOptionPane.showMessageDialog(rootPane, "User ID or password is incorrect");
       //}
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void RPAbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RPAbuttonActionPerformed
+        AccountRequest obj = new AccountRequest();
+        obj.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_RPAbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,8 +315,6 @@ public class LoginPage extends javax.swing.JFrame {
     }
   int i = RI.people.size();
     int t = 0;
-    String ID;
-    String pass;
     
     while(t<i)
     {
@@ -331,6 +349,7 @@ public class LoginPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
     private javax.swing.JPasswordField PasswordTextbox;
+    private javax.swing.JButton RPAbutton;
     private javax.swing.JTextField UserIDTextbox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

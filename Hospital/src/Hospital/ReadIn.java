@@ -22,6 +22,7 @@ public class ReadIn{
    String sex = "";
    String age = "";
    public List<Person> people = new ArrayList<Person>();
+   public List<Person> potentials = new ArrayList<Person>();
    public void Read() throws Exception{
    try {
             File f = new File("Users.txt");
@@ -51,6 +52,35 @@ public class ReadIn{
    }catch (FileNotFoundException e) {         
             e.printStackTrace();
         }
-   }}
+   }
+   public void ReadPotentials() throws Exception{
+   try {
+            File f = new File("AccountRequests.txt");
+            Scanner sc = new Scanner(f);
+
+            //List<Person> people = new ArrayList<Person>();
+
+            while(sc.hasNextLine() && !found){
+                String line = sc.nextLine();
+                String[] details = line.split(":");
+                name = details[0];
+                address = details[1];
+                sex = details[2];
+                age = details[3];
+                Person p = new Person(name,address,sex,age);
+                potentials.add(p);
+                
+                }
+            
+            sc.close();
+            for(Person p: potentials){
+                System.out.println(p.toString());
+            }
+
+   }catch (FileNotFoundException e) {         
+            e.printStackTrace();
+        }
+   }
+}
    
 

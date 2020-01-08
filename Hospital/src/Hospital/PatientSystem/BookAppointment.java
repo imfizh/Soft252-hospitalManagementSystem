@@ -212,15 +212,6 @@ public class BookAppointment extends javax.swing.JFrame {
     }
     t= t+1;
     }
-    
-	//File file = new File("Doctors.txt"); 
-        //BufferedReader br = new BufferedReader(new FileReader(file));
-       // String s; 
-        //DoctorSelect.addItem("gamer");
-        //while ((s = br.readLine()) != null){
-            //DoctorSelect.addItem(s);
-            //br.readLine();
-        //}
     }
     public void AddDocs(){
         try {
