@@ -11,16 +11,17 @@ import Hospital.AdminSystem.AdminPage;
 import Hospital.PatientSystem.PatientPage;
 import javax.swing.JOptionPane;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Hospital.Patient;
-import java.util.ArrayList;
 /**
  *
  * @author Luke
  */
 public class LoginPage extends javax.swing.JFrame {
-
+//private static Scanner x;
     /**
      * Creates new form LoginPage
      */
@@ -119,9 +120,8 @@ public class LoginPage extends javax.swing.JFrame {
       //String userID = UserIDTextbox.getText();
       //String password = PasswordTextbox.getText();
         try {
-            //Logins();
+            //Logins(); 
             Logins2();
-            
         } catch (Exception ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -223,43 +223,71 @@ public class LoginPage extends javax.swing.JFrame {
   JOptionPane.showMessageDialog(rootPane, "User ID or password is incorrect");
   }
   } 
-    public void Logins2()throws Exception{
-        try{
-    ObjectInputStream in = new ObjectInputStream(new FileInputStream("testFile.txt"));
-    //Patient p2 = (Patient) in.readObject();
-    Object obj = null;
-    while(!(obj = in.readObject()).equals(null)){
-        if(obj instanceof Patient){
-        //Patient p2 = (Patient) in.readObject();
-        Patient p2 = (Patient)obj;
-        System.out.println(p2.getUserID());
-        if(p2.getUserID().equals(UserIDTextbox.getText()) && p2.getPassword().equals(PasswordTextbox.getText())){
-          PatientPage page = new PatientPage();
-          page.setVisible(true);
-          dispose();
-        }}
+ public void Logins2() throws Exception
+ {
+   boolean found = false;
+   String userID = "";
+   String password = "";
+   String name = "";
+   String address = "";
+   String sex = "";
+   String age = "";
+ 
+   try {
+            File f = new File("Users.txt");
+            Scanner sc = new Scanner(f);
+
+            List<Person> people = new ArrayList<Person>();
+
+            while(sc.hasNextLine() && !found){
+                String line = sc.nextLine();
+                String[] details = line.split(":");
+                userID = details[0];
+                password = details[1];
+                name = details[2];
+                address = details[3];
+                sex = details[4];
+                age = details[5];
+                Person p = new Person(userID,password,name,address,sex,age);
+                people.add(p);
+                if(userID.equals(UserIDTextbox.getText())&& password.equals(PasswordTextbox.getText()))
+                {
+                    char first = userID.charAt(0);
+                    String first1 = Character.toString(first);
+                if(first1.equals("a") || first1.equals("A")){
+                AdminPage obj = new AdminPage();
+                obj.setVisible(true);
+                dispose();
+                } else if(first1.equals("p") || first1.equals("P")){
+                PatientPage obj = new PatientPage();
+                obj.setVisible(true);
+                dispose();
+                }else if(first1.equals("d") || first1.equals("D")){
+                DoctorPage obj = new DoctorPage();
+                obj.setVisible(true);
+                dispose();
+                }else if(first1.equals("s") || first1.equals("S")){
+                SecretaryPage obj = new SecretaryPage();
+                obj.setVisible(true);
+                dispose();
+                }}
+            }
+            sc.close();
+            for(Person p: people){
+                System.out.println(p.toString());
+            }
+
+        } catch (FileNotFoundException e) {         
+            e.printStackTrace();
+        }
     }
+  //if(userID.trim().equals(UserIDTextbox.getText()) && password.trim().equals(PasswordTextbox.getText()))
+  //{
+      //System.out.println("yes");
+  //}
+  
+  
     
-    //if(p2.getUserID().equals(UserIDTextbox.getText()) && p2.getPassword().equals(PasswordTextbox.getText())){
-        //PatientPage obj = new PatientPage();
-          //obj.setVisible(true);
-          //dispose();
-          
-          in.close();
-        }catch(EOFException eof){
-			System.out.println("End of file reached");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    //}
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;

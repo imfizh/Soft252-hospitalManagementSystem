@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Hospital.SecretarySystem;
-import Hospital.Patient;
 import javax.swing.JOptionPane;
 import java.io.*;
 import java.util.logging.Level;
@@ -244,11 +243,11 @@ public class AddPatient extends javax.swing.JFrame {
     String userID = UserIDText.getText();
     String password = PasswordText.getText();
     
-    Patient p1 = new Patient(name,age,sex,userID,password);
+    //Patient p1 = new Patient(name,age,sex,userID,password);
     FileOutputStream fos = new FileOutputStream("testFile.txt", true);
     ObjectOutputStream out = new ObjectOutputStream(fos);
     //ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("testFile.txt"));
-    out.writeObject(p1);
+    //out.writeObject(p1);
     
     out.close();
     }
