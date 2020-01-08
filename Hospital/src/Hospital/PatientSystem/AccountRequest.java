@@ -6,15 +6,21 @@
 package Hospital.PatientSystem;
 
 import Hospital.LoginPage;
+import Hospital.ReadIn;
 import java.io.BufferedWriter;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utilities.IObserver;
+import utilities.Isubject;
+import Hospital.Observers;
+import Hospital.SecretarySystem.SecretaryPage;
 /**
  *
  * @author Luke
  */
-public class AccountRequest extends javax.swing.JFrame {
+public class AccountRequest extends javax.swing.JFrame{
 
     /**
      * Creates new form AccountRequest
@@ -231,7 +237,23 @@ public class AccountRequest extends javax.swing.JFrame {
     NameText.setText("");
     AddressText.setText("");
     AgeText.setText("");
+    Observers OB = new Observers();
+    SecretaryPage SB = new SecretaryPage();
+    OB.registerObserver(SB);
+    OB.setNewRequest(true);
     }
+    public int Number(){
+    ReadIn RI = new ReadIn();
+    int i;
+    try {
+        RI.ReadPotentials();
+    } catch (Exception ex) {
+        Logger.getLogger(AccountRequest.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    i = RI.potentials.size();
+    return i;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

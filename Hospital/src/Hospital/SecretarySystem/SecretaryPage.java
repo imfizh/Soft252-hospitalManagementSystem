@@ -6,19 +6,45 @@
 package Hospital.SecretarySystem;
 
 import Hospital.LoginPage;
+import Hospital.Observers;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utilities.IObserver;
 
 /**
  *
  * @author Luke
  */
-public class SecretaryPage extends javax.swing.JFrame {
-
+public class SecretaryPage extends javax.swing.JFrame implements IObserver{
+         Observers OBS = new Observers();
     /**
      * Creates new form SecretaryPage
      */
     public SecretaryPage() {
         initComponents();
+             try {
+                 AtStartCheck();
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(SecretaryPage.class.getName()).log(Level.SEVERE, null, ex);
+             }
     }
+    public void AtStartCheck() throws FileNotFoundException{
+        File f = new File("Boolean.txt");
+        Scanner sc = new Scanner(f);
+        String Check = sc.nextLine();
+        if(Check.equals("true")){
+        NumberOfAccounts.setText("There are new account requests");
+        }
+    }
+    
+    @Override
+    public void update(){
+    System.out.println("Secretary must accept account");
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +60,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         LogOut = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         CreatePatientAccount = new javax.swing.JButton();
+        NumberOfAccounts = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +105,9 @@ public class SecretaryPage extends javax.swing.JFrame {
             }
         });
 
+        NumberOfAccounts.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        NumberOfAccounts.setText("No new account requests");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,8 +120,10 @@ public class SecretaryPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CreatePatientAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CreatePatientAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NumberOfAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,8 +133,10 @@ public class SecretaryPage extends javax.swing.JFrame {
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CreatePatientAccount))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
+                    .addComponent(NumberOfAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(CreatePatientAccount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                 .addComponent(LogOut)
                 .addContainerGap())
         );
@@ -153,6 +187,7 @@ public class SecretaryPage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SecretaryPage().setVisible(true);
+                
             }
         });
     }
@@ -160,6 +195,7 @@ public class SecretaryPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreatePatientAccount;
     private javax.swing.JButton LogOut;
+    private javax.swing.JTextField NumberOfAccounts;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

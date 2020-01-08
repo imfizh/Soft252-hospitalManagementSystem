@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Hospital.SecretarySystem;
+import Hospital.Observers;
 import Hospital.ReadIn;
 import javax.swing.JOptionPane;
 import java.io.*;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
  */
 public class AddPatient extends javax.swing.JFrame {
 ReadIn RI = new ReadIn();
+Observers OBS = new Observers();
 public int num = 0;
     /**
      * Creates new form AddPatient
@@ -228,6 +230,11 @@ public int num = 0;
     try {
         Rewrite();
     } catch (Exception ex) {
+        Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    try {
+        OBS.fileF();
+    } catch (IOException ex) {
         Logger.getLogger(AddPatient.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_CreatePatientActionPerformed
