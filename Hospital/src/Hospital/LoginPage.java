@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * @author Luke
  */
 public class LoginPage extends javax.swing.JFrame {
-//private static Scanner x;
+
     /**
      * Creates new form LoginPage
      */
@@ -121,7 +121,8 @@ public class LoginPage extends javax.swing.JFrame {
       //String password = PasswordTextbox.getText();
         try {
             //Logins(); 
-            Logins2();
+            //Logins2();
+            Logins3();
         } catch (Exception ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,12 +233,12 @@ public class LoginPage extends javax.swing.JFrame {
    String address = "";
    String sex = "";
    String age = "";
- 
+ List<Person> people = new ArrayList<Person>();
    try {
             File f = new File("Users.txt");
             Scanner sc = new Scanner(f);
 
-            List<Person> people = new ArrayList<Person>();
+            //List<Person> people = new ArrayList<Person>();
 
             while(sc.hasNextLine() && !found){
                 String line = sc.nextLine();
@@ -285,7 +286,45 @@ public class LoginPage extends javax.swing.JFrame {
   //{
       //System.out.println("yes");
   //}
-  
+  public void Logins3(){
+  ReadIn RI = new ReadIn();
+    try {
+        RI.Read();
+    } catch (Exception ex) {
+        Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  int i = RI.people.size();
+    int t = 0;
+    String ID;
+    String pass;
+    
+    while(t<i)
+    {
+       if(RI.people.get(t).getUserID().equals(UserIDTextbox.getText())&& RI.people.get(t).getPassword().equals(PasswordTextbox.getText()))
+                {
+                char first = RI.people.get(t).getUserID().charAt(0);
+                String first1 = Character.toString(first);
+                if(first1.equals("a") || first1.equals("A")){
+                AdminPage obj = new AdminPage();
+                obj.setVisible(true);
+                dispose();
+                } else if(first1.equals("p") || first1.equals("P")){
+                PatientPage obj = new PatientPage();
+                obj.setVisible(true);
+                dispose();
+                }else if(first1.equals("d") || first1.equals("D")){
+                DoctorPage obj = new DoctorPage();
+                obj.setVisible(true);
+                dispose();
+                }else if(first1.equals("s") || first1.equals("S")){
+                SecretaryPage obj = new SecretaryPage();
+                obj.setVisible(true);
+                dispose();
+                }}
+        t= t+1;
+    }
+    }
+  //}
   
     
 

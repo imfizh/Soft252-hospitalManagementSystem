@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Hospital;
-
+//import java.util.ArrayList;
+//import java.util.List;
 /**
  *
  * @author Luke
@@ -16,11 +17,14 @@ public class Person {
     private String userID;
     private String password;
     private String address;
-
+    //public List<Person> people = new ArrayList<Person>();
     public Person(String userID, String password, String name, String address, String sex, String age){
         this.sex = sex;
         this.setName(name);
         this.age = age;
+        this.address = address;
+        this.userID = userID;
+        this.password = password;
     }
     public String toString(){
     return this.sex + " " + this.name + " " + this.age;

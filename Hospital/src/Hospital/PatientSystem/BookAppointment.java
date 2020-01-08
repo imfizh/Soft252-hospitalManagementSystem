@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Hospital.LoginPage;
 /**
  *
  * @author Luke
@@ -193,15 +194,29 @@ public class BookAppointment extends javax.swing.JFrame {
         });
     }
     public void Doctors() throws IOException{
+    LoginPage LP = new LoginPage();
+    int i = LP.people.size();
+    int t =0;
+    System.out.println(i);
+    while(t<i)
+    {
+    String ID = LP.people.get(t).getUserID();
+    char first = ID.charAt(0);
+    String first1 = Character.toString(first);
+    if(first1.equals("d") || first1.equals("D")){
+     System.out.println("GAMERS");
+    }
+    t= t+1;
+    }
     
-	File file = new File("Doctors.txt"); 
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String s; 
+	//File file = new File("Doctors.txt"); 
+        //BufferedReader br = new BufferedReader(new FileReader(file));
+       // String s; 
         //DoctorSelect.addItem("gamer");
-        while ((s = br.readLine()) != null){
-            DoctorSelect.addItem(s);
-            br.readLine();
-        }
+        //while ((s = br.readLine()) != null){
+            //DoctorSelect.addItem(s);
+            //br.readLine();
+        //}
     }
     public void AddDocs(){
         try {
@@ -210,6 +225,7 @@ public class BookAppointment extends javax.swing.JFrame {
             Logger.getLogger(BookAppointment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
