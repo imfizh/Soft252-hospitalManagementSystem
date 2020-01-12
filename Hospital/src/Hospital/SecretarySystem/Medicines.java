@@ -6,8 +6,12 @@
 package Hospital.SecretarySystem;
 
 import Hospital.MedicineReadIn;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,12 +66,14 @@ MedicineReadIn MRI = new MedicineReadIn();
         jLabel7 = new javax.swing.JLabel();
         MedicineBoxOMM = new javax.swing.JComboBox<>();
         AmmountTextOMM = new javax.swing.JTextField();
+        OrderOMM = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         NameText = new javax.swing.JTextField();
         AmmountText = new javax.swing.JTextField();
+        OrderONM = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -163,22 +169,27 @@ MedicineReadIn MRI = new MedicineReadIn();
 
         AmmountTextOMM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        OrderOMM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        OrderOMM.setText("Order");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(MedicineBoxOMM, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(AmmountTextOMM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(OrderOMM, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addGap(18, 18, 18)
+                            .addComponent(MedicineBoxOMM, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(18, 18, 18)
+                            .addComponent(AmmountTextOMM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -193,7 +204,9 @@ MedicineReadIn MRI = new MedicineReadIn();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(AmmountTextOMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(OrderOMM)
+                .addGap(21, 21, 21))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -210,6 +223,14 @@ MedicineReadIn MRI = new MedicineReadIn();
         NameText.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         AmmountText.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        OrderONM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        OrderONM.setText("Order");
+        OrderONM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderONMActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -228,6 +249,10 @@ MedicineReadIn MRI = new MedicineReadIn();
                         .addGap(40, 40, 40)
                         .addComponent(NameText, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(OrderONM, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +267,9 @@ MedicineReadIn MRI = new MedicineReadIn();
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(AmmountText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OrderONM)
+                .addGap(16, 16, 16))
         );
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -279,14 +306,11 @@ MedicineReadIn MRI = new MedicineReadIn();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -302,6 +326,27 @@ MedicineReadIn MRI = new MedicineReadIn();
         int i = MedicineBox.getSelectedIndex();
         StockBox.setText(MRI.medicine.get(i).getStock());
     }//GEN-LAST:event_MedicineBoxActionPerformed
+
+    private void OrderONMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderONMActionPerformed
+        String name = NameText.getText();
+        String stock = AmmountText.getText();
+        if(name.equals("")||stock.equals("")){
+        JOptionPane.showMessageDialog(rootPane, "Make sure all fields are filled out");
+        }else{
+        BufferedWriter br;
+            try {
+                br = new BufferedWriter(new FileWriter(("Medicines.txt"),true));
+                br.newLine();
+                br.write(name + ":" + stock);
+                br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Medicines.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        NameText.setText("");
+        AmmountText.setText("");
+        JOptionPane.showMessageDialog(rootPane, "New medicine ordered");
+        }
+    }//GEN-LAST:event_OrderONMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,6 +389,8 @@ MedicineReadIn MRI = new MedicineReadIn();
     private javax.swing.JComboBox<String> MedicineBox;
     private javax.swing.JComboBox<String> MedicineBoxOMM;
     private javax.swing.JTextField NameText;
+    private javax.swing.JButton OrderOMM;
+    private javax.swing.JButton OrderONM;
     private javax.swing.JTextField StockBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
