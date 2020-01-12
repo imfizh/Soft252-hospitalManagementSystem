@@ -17,6 +17,9 @@ public class Medicine {
         this.name = Mname;
         this.stock = Mstock;
     }
+    public String toString(){
+    return this.name + " " + this.stock;
+}
     public String getName() {
         return name;
     }

@@ -5,18 +5,39 @@
  */
 package Hospital.SecretarySystem;
 
+import Hospital.MedicineReadIn;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Luke
  */
 public class Medicines extends javax.swing.JFrame {
-
+MedicineReadIn MRI = new MedicineReadIn();
     /**
      * Creates new form Medicines
      */
     public Medicines() {
         initComponents();
+        FillSelects();
     }
+    public void FillSelects()
+    {
+    
+        try {
+            MRI.Read();
+        } catch (Exception ex) {
+            Logger.getLogger(Medicines.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    int i = MRI.medicine.size();
+    for(int t = 0; t<i; t++)
+    {
+    MedicineBox.addItem(MRI.medicine.get(t).getName());
+    MedicineBoxOMM.addItem(MRI.medicine.get(t).getName());
+    }
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +106,11 @@ public class Medicines extends javax.swing.JFrame {
         jLabel6.setText("Find medicine");
 
         MedicineBox.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        MedicineBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedicineBoxActionPerformed(evt);
+            }
+        });
 
         StockBox.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -271,6 +297,11 @@ public class Medicines extends javax.swing.JFrame {
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void MedicineBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicineBoxActionPerformed
+        int i = MedicineBox.getSelectedIndex();
+        StockBox.setText(MRI.medicine.get(i).getStock());
+    }//GEN-LAST:event_MedicineBoxActionPerformed
 
     /**
      * @param args the command line arguments

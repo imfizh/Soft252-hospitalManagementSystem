@@ -134,8 +134,6 @@ public class LoginPage extends javax.swing.JFrame {
       //String userID = UserIDTextbox.getText();
       //String password = PasswordTextbox.getText();
         try {
-            //Logins(); 
-            //Logins2();
             Logins3();
         } catch (Exception ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
@@ -201,106 +199,6 @@ public class LoginPage extends javax.swing.JFrame {
                 new LoginPage().setVisible(true);
             }
         });
-    }
-    public void Logins()throws Exception 
-  { 
-  // We need to provide file path as the parameter: 
-  // double backquote is to avoid compiler interpret words 
-  // like \test as \t (ie. as a escape sequence) 
-  File file = new File("Logins.txt"); 
-  
-  BufferedReader br = new BufferedReader(new FileReader(file)); 
-  
-  String st; 
-  String userID = UserIDTextbox.getText();
-  String password = PasswordTextbox.getText();
-  String login = userID + password;
-  Boolean log = false;
-  while ((st = br.readLine()) != null){ 
-      if(st.equals(login)){
-          char ch1 = st.charAt(0);
-          log = true;
-          String s=String.valueOf(ch1);
-          if(s.equals("A")){
-          AdminPage obj = new AdminPage();
-          obj.setVisible(true);
-          dispose();
-          }else if(s.equals("S")){
-          SecretaryPage obj = new SecretaryPage();
-          obj.setVisible(true);
-          dispose();
-          }else if(s.equals("D")){
-          DoctorPage obj = new DoctorPage();
-          obj.setVisible(true);
-          dispose();
-          }else if(s.equals("P")){
-          PatientPage obj = new PatientPage();
-          obj.setVisible(true);
-          dispose();
-          }
-      }   
-  }
-  if(log==false){
-  JOptionPane.showMessageDialog(rootPane, "User ID or password is incorrect");
-  }
-  } 
- public void Logins2() throws Exception
- {
-   boolean found = false;
-   String userID = "";
-   String password = "";
-   String name = "";
-   String address = "";
-   String sex = "";
-   String age = "";
- List<Person> people = new ArrayList<Person>();
-   try {
-            File f = new File("Users.txt");
-            Scanner sc = new Scanner(f);
-
-            //List<Person> people = new ArrayList<Person>();
-
-            while(sc.hasNextLine() && !found){
-                String line = sc.nextLine();
-                String[] details = line.split(":");
-                userID = details[0];
-                password = details[1];
-                name = details[2];
-                address = details[3];
-                sex = details[4];
-                age = details[5];
-                Person p = new Person(userID,password,name,address,sex,age);
-                people.add(p);
-                if(userID.equals(UserIDTextbox.getText())&& password.equals(PasswordTextbox.getText()))
-                {
-                    char first = userID.charAt(0);
-                    String first1 = Character.toString(first);
-                if(first1.equals("a") || first1.equals("A")){
-                AdminPage obj = new AdminPage();
-                obj.setVisible(true);
-                dispose();
-                } else if(first1.equals("p") || first1.equals("P")){
-                PatientPage obj = new PatientPage();
-                obj.setVisible(true);
-                dispose();
-                }else if(first1.equals("d") || first1.equals("D")){
-                DoctorPage obj = new DoctorPage();
-                obj.setVisible(true);
-                dispose();
-                }else if(first1.equals("s") || first1.equals("S")){
-                SecretaryPage obj = new SecretaryPage();
-                obj.setVisible(true);
-                dispose();
-                }}
-            }
-            sc.close();
-            for(Person p: people){
-                System.out.println(p.toString());
-            }
-
-        } catch (FileNotFoundException e) {         
-            e.printStackTrace();
-        }
     }
   //if(userID.trim().equals(UserIDTextbox.getText()) && password.trim().equals(PasswordTextbox.getText()))
   //{
