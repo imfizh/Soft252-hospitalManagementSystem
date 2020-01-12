@@ -61,6 +61,8 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
         jLabel2 = new javax.swing.JLabel();
         CreatePatientAccount = new javax.swing.JButton();
         NumberOfAccounts = new javax.swing.JTextField();
+        MedButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,6 +110,17 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
         NumberOfAccounts.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         NumberOfAccounts.setText("No new account requests");
 
+        MedButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        MedButton.setText("Medicines");
+        MedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MedButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Medicines");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,11 +132,17 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
                 .addGap(11, 11, 11))
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CreatePatientAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NumberOfAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CreatePatientAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NumberOfAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,7 +155,11 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
                     .addComponent(NumberOfAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(CreatePatientAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MedButton)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
                 .addComponent(LogOut)
                 .addContainerGap())
         );
@@ -155,6 +178,12 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
           obj.setVisible(true);
           dispose();
     }//GEN-LAST:event_CreatePatientAccountActionPerformed
+
+    private void MedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedButtonActionPerformed
+        Medicines obj = new Medicines();
+          obj.setVisible(true);
+          dispose();
+    }//GEN-LAST:event_MedButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,9 +224,11 @@ public class SecretaryPage extends javax.swing.JFrame implements IObserver{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CreatePatientAccount;
     private javax.swing.JButton LogOut;
+    private javax.swing.JButton MedButton;
     private javax.swing.JTextField NumberOfAccounts;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
