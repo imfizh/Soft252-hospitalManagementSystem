@@ -171,6 +171,11 @@ MedicineReadIn MRI = new MedicineReadIn();
 
         OrderOMM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         OrderOMM.setText("Order");
+        OrderOMM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderOMMActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -345,8 +350,45 @@ MedicineReadIn MRI = new MedicineReadIn();
         NameText.setText("");
         AmmountText.setText("");
         JOptionPane.showMessageDialog(rootPane, "New medicine ordered");
+        FillSelects();
         }
     }//GEN-LAST:event_OrderONMActionPerformed
+
+    private void OrderOMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderOMMActionPerformed
+        String Amount = AmmountTextOMM.getText();
+        if(Amount.equals("")){
+        JOptionPane.showMessageDialog(rootPane, "Make sure all fields are filled out");
+        }else{
+        int i = MedicineBoxOMM.getSelectedIndex();
+        int cur = Integer.parseInt(MRI.medicine.get(i).getStock()) + Integer.parseInt(Amount);
+        MRI.medicine.get(i).setStock(Integer.toString(cur));
+        BufferedWriter br;
+            try {
+                int t = MRI.medicine.size();
+                br = new BufferedWriter(new FileWriter(("Medicines.txt"),false));
+                br.write(MRI.medicine.get(0).getName() + ":" + MRI.medicine.get(0).getStock());
+                br.close();
+                for(int u = 1; u<t;u++){
+                br = new BufferedWriter(new FileWriter(("Medicines.txt"),true));
+                br.newLine();
+                br.write(MRI.medicine.get(u).getName() + ":" + MRI.medicine.get(u).getStock());
+                br.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(Medicines.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        AmmountTextOMM.setText("");
+        JOptionPane.showMessageDialog(rootPane, "medicine ordered");
+            try {
+                MRI.Read();
+            } catch (Exception ex) {
+                Logger.getLogger(Medicines.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        FillSelects();
+        int q = MedicineBox.getSelectedIndex();
+        StockBox.setText(MRI.medicine.get(q).getStock());
+        }
+    }//GEN-LAST:event_OrderOMMActionPerformed
 
     /**
      * @param args the command line arguments
