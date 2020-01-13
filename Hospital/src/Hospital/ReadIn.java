@@ -81,6 +81,11 @@ public class ReadIn{
             e.printStackTrace();
         }
    }
+   public String TestName(int i){
+       String Id = people.get(i).getUserID();
+       return Id;
+       
+   }
 }
    
 
