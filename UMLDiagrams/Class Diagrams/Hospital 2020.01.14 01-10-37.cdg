@@ -2,10 +2,70 @@
 
 <ClassDiagram name="Hospital">
   <ClassDiagramComponents>
-    <Class name="AdminPage" package="Hospital.AdminSystem" visibility="public" xPosition="434.0" yPosition="20.0">
+    <Class name="AccountFactory" package="Hospital.AdminSystem" visibility="public" xPosition="20.0" yPosition="51.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="makeAccountType" returnType="AccountType" visibility="public">
+          <Argument type="String" name="type"/>
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="sex"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="password"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AccountType" package="Hospital.AdminSystem" visibility="public" isAbstract="true" xPosition="717.0" yPosition="20.0">
       <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="age" type="String" visibility="private"/>
+        <Field name="sex" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="ID" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="first" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Create" returnType="void" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAge" returnType="String" visibility="public"/>
+        <Method name="setAge" returnType="void" visibility="public">
+          <Argument type="String" name="age"/>
+        </Method>
+        <Method name="getSex" returnType="String" visibility="public"/>
+        <Method name="setSex" returnType="void" visibility="public">
+          <Argument type="String" name="sex"/>
+        </Method>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="getID" returnType="String" visibility="public"/>
+        <Method name="setID" returnType="void" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getFirst" returnType="String" visibility="public"/>
+        <Method name="setFirst" returnType="void" visibility="public">
+          <Argument type="String" name="first"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AdminPage" package="Hospital.AdminSystem" visibility="public" xPosition="1585.0" yPosition="41.0">
+      <Fields>
+        <Field name="CreateAccountButton" type="javax.swing.JButton" visibility="private"/>
         <Field name="LogOut" type="javax.swing.JButton" visibility="private"/>
         <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
         <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
       </Fields>
       <Constructors>
@@ -16,12 +76,94 @@
         <Method name="LogOutActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
+        <Method name="CreateAccountButtonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
         <Method name="main" returnType="void" visibility="public" isStatic="true">
           <Argument type="String" name="args"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="DoctorAppointments" package="Hospital.DoctorSystem" visibility="public" xPosition="681.0" yPosition="20.0">
+    <Class name="AdminType" package="Hospital.AdminSystem" visibility="public" xPosition="1035.0" yPosition="4.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="sex"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CreateAccount" package="Hospital.AdminSystem" visibility="public" xPosition="1916.0" yPosition="4.0">
+      <Fields>
+        <Field name="AddressText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="AgeText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="IDText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="NameText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="PasswordText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="SexBox" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="TypeBox" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton2" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jButton2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DocType" package="Hospital.AdminSystem" visibility="public" xPosition="1046.0" yPosition="288.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="sex"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="SecType" package="Hospital.AdminSystem" visibility="public" xPosition="1047.0" yPosition="126.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="sex"/>
+          <Argument type="String" name="age"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="DoctorAppointments" package="Hospital.DoctorSystem" visibility="public" xPosition="2500.0" yPosition="-8.0">
       <Fields>
         <Field name="BackButton" type="javax.swing.JButton" visibility="private"/>
         <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
@@ -42,7 +184,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="DoctorPage" package="Hospital.DoctorSystem" visibility="public" xPosition="944.0" yPosition="20.0">
+    <Class name="DoctorPage" package="Hospital.DoctorSystem" visibility="public" xPosition="-465.0" yPosition="426.0">
       <Fields>
         <Field name="LogOut" type="javax.swing.JButton" visibility="private"/>
         <Field name="ViewAppointments" type="javax.swing.JButton" visibility="private"/>
@@ -68,7 +210,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Hospital" package="Hospital.DoctorSystem" visibility="public" xPosition="1220.0" yPosition="-903.0">
+    <Class name="Hospital" package="Hospital.DoctorSystem" visibility="public" xPosition="300.0" yPosition="-109.0">
       <Fields>
         <Field name="frame" type="JFrame" visibility="private"/>
         <Field name="Age" type="javax.swing.JTextArea" visibility="private"/>
@@ -131,7 +273,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="LoginPage" package="Hospital" visibility="public" xPosition="1516.0" yPosition="20.0">
+    <Class name="LoginPage" package="Hospital" visibility="public" xPosition="638.0" yPosition="587.0">
       <Fields>
         <Field name="LoginButton" type="javax.swing.JButton" visibility="private"/>
         <Field name="PasswordTextbox" type="javax.swing.JPasswordField" visibility="private"/>
@@ -155,12 +297,48 @@
         <Method name="main" returnType="void" visibility="public" isStatic="true">
           <Argument type="String" name="args"/>
         </Method>
-        <Method name="Logins" returnType="void" visibility="public"/>
-        <Method name="Logins2" returnType="void" visibility="public"/>
         <Method name="Logins3" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Observers" package="Hospital" visibility="public" xPosition="1843.0" yPosition="20.0">
+    <Class name="Medicine" package="Hospital" visibility="public" xPosition="1522.0" yPosition="1306.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="stock" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Mname"/>
+          <Argument type="String" name="Mstock"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getStock" returnType="String" visibility="public"/>
+        <Method name="setStock" returnType="void" visibility="public">
+          <Argument type="String" name="stock"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MedicineReadIn" package="Hospital" visibility="public" xPosition="1819.0" yPosition="1366.0">
+      <Fields>
+        <Field name="name" type="String" visibility="package"/>
+        <Field name="stock" type="String" visibility="package"/>
+        <Field name="found" type="boolean" visibility="package"/>
+        <Field name="medicine" type="List&lt;Medicine&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Read" returnType="void" visibility="public"/>
+        <Method name="TestName" returnType="String" visibility="public">
+          <Argument type="int" name="i"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Observers" package="Hospital" visibility="public" xPosition="1860.0" yPosition="538.0">
       <Fields>
         <Field name="observers" type="ArrayList&lt;IObserver&gt;" visibility="private"/>
         <Field name="NumOfAccounts" type="int" visibility="private"/>
@@ -187,7 +365,7 @@
         <Method name="notifyObservers" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="AccountRequest" package="Hospital.PatientSystem" visibility="public" xPosition="2433.0" yPosition="441.0">
+    <Class name="AccountRequest" package="Hospital.PatientSystem" visibility="public" xPosition="2184.0" yPosition="4.0">
       <Fields>
         <Field name="AddressText" type="javax.swing.JTextField" visibility="private"/>
         <Field name="AgeText" type="javax.swing.JTextField" visibility="private"/>
@@ -220,7 +398,7 @@
         <Method name="Number" returnType="int" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="BookAppointment" package="Hospital.PatientSystem" visibility="public" xPosition="2460.0" yPosition="20.0">
+    <Class name="BookAppointment" package="Hospital.PatientSystem" visibility="public" xPosition="2446.0" yPosition="246.0">
       <Fields>
         <Field name="Back" type="javax.swing.JButton" visibility="private"/>
         <Field name="DateSelect" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
@@ -249,7 +427,7 @@
         <Method name="AddDocs" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="PatientPage" package="Hospital.PatientSystem" visibility="public" xPosition="31.0" yPosition="574.0">
+    <Class name="PatientPage" package="Hospital.PatientSystem" visibility="public" xPosition="20.0" yPosition="965.0">
       <Fields>
         <Field name="AppointmentButton" type="javax.swing.JButton" visibility="private"/>
         <Field name="LogOutButton" type="javax.swing.JButton" visibility="private"/>
@@ -277,7 +455,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ViewAppointments" package="Hospital.PatientSystem" visibility="public" xPosition="146.0" yPosition="297.0">
+    <Class name="ViewAppointments" package="Hospital.PatientSystem" visibility="public" xPosition="20.0" yPosition="1309.0">
       <Fields>
         <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
         <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
@@ -298,7 +476,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Person" package="Hospital" visibility="public" xPosition="391.0" yPosition="585.0">
+    <Class name="Person" package="Hospital" visibility="public" xPosition="974.0" yPosition="416.0">
       <Fields>
         <Field name="sex" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -351,7 +529,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ReadIn" package="Hospital" visibility="public" xPosition="931.0" yPosition="551.0">
+    <Class name="ReadIn" package="Hospital" visibility="public" xPosition="1190.0" yPosition="435.0">
       <Fields>
         <Field name="found" type="boolean" visibility="package"/>
         <Field name="userID" type="String" visibility="package"/>
@@ -367,9 +545,12 @@
       <Methods>
         <Method name="Read" returnType="void" visibility="public"/>
         <Method name="ReadPotentials" returnType="void" visibility="public"/>
+        <Method name="TestName" returnType="String" visibility="public">
+          <Argument type="int" name="i"/>
+        </Method>
       </Methods>
     </Class>
-    <Class name="AddPatient" package="Hospital.SecretarySystem" visibility="public" xPosition="1258.0" yPosition="404.0">
+    <Class name="AddPatient" package="Hospital.SecretarySystem" visibility="public" xPosition="1390.0" yPosition="448.0">
       <Fields>
         <Field name="RI" type="ReadIn" visibility="package"/>
         <Field name="OBS" type="Observers" visibility="package"/>
@@ -416,14 +597,66 @@
         <Method name="Rewrite" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="SecretaryPage" package="Hospital.SecretarySystem" visibility="public" xPosition="1821.0" yPosition="599.0">
+    <Class name="Medicines" package="Hospital.SecretarySystem" visibility="public" xPosition="2014.0" yPosition="965.0">
+      <Fields>
+        <Field name="MRI" type="MedicineReadIn" visibility="package"/>
+        <Field name="AmmountText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="AmmountTextOMM" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="MedicineBox" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="MedicineBoxOMM" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="NameText" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="OrderOMM" type="javax.swing.JButton" visibility="private"/>
+        <Field name="OrderONM" type="javax.swing.JButton" visibility="private"/>
+        <Field name="StockBox" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel10" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel9" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel3" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel4" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="FillSelects" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="MedicineBoxActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="OrderONMActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="OrderOMMActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SecretaryPage" package="Hospital.SecretarySystem" visibility="public" xPosition="2353.0" yPosition="848.0">
       <Fields>
         <Field name="OBS" type="Observers" visibility="package"/>
         <Field name="CreatePatientAccount" type="javax.swing.JButton" visibility="private"/>
         <Field name="LogOut" type="javax.swing.JButton" visibility="private"/>
+        <Field name="MedButton" type="javax.swing.JButton" visibility="private"/>
         <Field name="NumberOfAccounts" type="javax.swing.JTextField" visibility="private"/>
         <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
         <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
         <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
       </Fields>
       <Constructors>
@@ -439,17 +672,20 @@
         <Method name="CreatePatientAccountActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
+        <Method name="MedButtonActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
         <Method name="main" returnType="void" visibility="public" isStatic="true">
           <Argument type="String" name="args"/>
         </Method>
       </Methods>
     </Class>
-    <Interface name="IObserver" package="utilities" visibility="public" xPosition="2235.0" yPosition="240.0">
+    <Interface name="IObserver" package="utilities" visibility="public" xPosition="2364.0" yPosition="682.0">
       <Methods>
         <Method name="update" returnType="void" visibility="package"/>
       </Methods>
     </Interface>
-    <Interface name="Isubject" package="utilities" visibility="public" xPosition="2195.0" yPosition="54.0">
+    <Interface name="Isubject" package="utilities" visibility="public" xPosition="1707.0" yPosition="943.0">
       <Methods>
         <Method name="registerObserver" returnType="Boolean" visibility="package">
           <Argument type="IObserver" name="o"/>
@@ -462,15 +698,21 @@
     </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="Hospital.Observers" target="utilities.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="OBS" source="Hospital.SecretarySystem.AddPatient" target="Hospital.Observers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="potentials" source="Hospital.ReadIn" target="Hospital.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
-    <HasRelation name="RI" source="Hospital.SecretarySystem.AddPatient" target="Hospital.ReadIn" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Hospital.Observers" target="utilities.Isubject"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Hospital.SecretarySystem.SecretaryPage" target="utilities.IObserver"/>
-    <HasRelation name="OBS" source="Hospital.SecretarySystem.SecretaryPage" target="Hospital.Observers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="people" source="Hospital.ReadIn" target="Hospital.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
-    <UseRelation source="utilities.Isubject" target="utilities.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="observers" source="Hospital.Observers" target="utilities.IObserver" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;IObserver&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Hospital.Observers" target="utilities.Isubject"/>
+    <HasRelation name="MRI" source="Hospital.SecretarySystem.Medicines" target="Hospital.MedicineReadIn" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Hospital.AdminSystem.DocType" target="Hospital.AdminSystem.AccountType"/>
+    <HasRelation name="medicine" source="Hospital.MedicineReadIn" target="Hospital.Medicine" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Medicine&gt;"/>
+    <UseRelation source="Hospital.AdminSystem.AccountFactory" target="Hospital.AdminSystem.AccountType" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="OBS" source="Hospital.SecretarySystem.AddPatient" target="Hospital.Observers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Hospital.AdminSystem.SecType" target="Hospital.AdminSystem.AccountType"/>
+    <HasRelation name="RI" source="Hospital.SecretarySystem.AddPatient" target="Hospital.ReadIn" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="utilities.Isubject" target="utilities.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="people" source="Hospital.ReadIn" target="Hospital.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
+    <HasRelation name="OBS" source="Hospital.SecretarySystem.SecretaryPage" target="Hospital.Observers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Hospital.SecretarySystem.SecretaryPage" target="utilities.IObserver"/>
+    <IsRelation name="is" source="Hospital.AdminSystem.AdminType" target="Hospital.AdminSystem.AccountType"/>
+    <HasRelation name="potentials" source="Hospital.ReadIn" target="Hospital.Person" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Person&gt;"/>
+    <UseRelation source="Hospital.Observers" target="utilities.IObserver" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

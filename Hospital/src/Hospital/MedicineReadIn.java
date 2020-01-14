@@ -41,4 +41,9 @@ public class MedicineReadIn {
             e.printStackTrace();
         }
    }
+   public String TestName(int i){
+       String MedName = medicine.get(i).getName();
+       return MedName;
+       
+   }
 }
